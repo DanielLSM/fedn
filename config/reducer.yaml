@@ -7,7 +7,13 @@ services:
       - GET_HOSTS_FROM=dns
       - USER=test
       - PROJECT=project
-    image: "scaleoutsystems/fedn-reducer:master"
+      - FLASK_DEBUG=1
+      - FLASK_ENV=development
+#    image: "scaleoutsystems/fedn-reducer:master"
+    image: fedn:develop
+    build:
+      context: ..
+      dockerfile: components/base/Dockerfile
     working_dir: /app/client
     command: sh -c "mkdir -p /app/client/certs && fedn run reducer -n reducer  --init=./config/settings-reducer.yaml"
     volumes:

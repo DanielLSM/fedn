@@ -3,7 +3,11 @@ version: '3.3'
 services:
 
   combiner:
-    image: "scaleoutsystems/fedn-combiner:master"
+#    image: "scaleoutsystems/fedn-combiner:master"
+    image: fedn:develop
+    build:
+      context: ..
+      dockerfile: components/base/Dockerfile
     environment:
       - PYTHONUNBUFFERED=0
       - GET_HOSTS_FROM=dns
