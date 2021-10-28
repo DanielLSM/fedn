@@ -52,14 +52,11 @@ def get_helper(helper_type):
     :param helper_type (str): The helper type ('keras','pytorch')
     :return:
     """
-    if helper_type == 'numpyarray':
-        from fedn.utils.numpyarrayhelper import NumpyArrayHelper
-        return NumpyArrayHelper()
-    elif helper_type == 'keras':
+    if helper_type == 'keras':
         from fedn.utils.kerashelper import KerasHelper
         return KerasHelper()
-    elif helper_type == 'pytorch':
-        from fedn.utils.pytorchhelper import PytorchHelper
-        return PytorchHelper()
+    elif helper_type == 'weighted':
+        from fedn.utils.weighted_list_of_arrays_helper import WeightedListOfArraysHelper
+        return WeightedListOfArraysHelper()
     else:
-        return None
+        raise NotImplemented
